@@ -5,18 +5,13 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class Pluginblocker extends JavaPlugin implements Listener {
+public class Pluginblocker extends JavaPlugin {
     public void onDisable() {
         // TODO: Place any custom disable code here.
     }
-
+    private PluginBlockerCommandListener pbcl = new PluginBlockerCommandListener();
     public void onEnable() {
-        getServer().getPluginManager().registerEvents(this, this);
-    }
-
-    @EventHandler
-    public void onPlayerJoin(PlayerJoinEvent event) {
-        event.getPlayer().sendMessage("Welcome, " + event.getPlayer().getDisplayName() + "!");
+        getServer().getPluginManager().registerEvents(pbcl, this);
     }
 }
 
